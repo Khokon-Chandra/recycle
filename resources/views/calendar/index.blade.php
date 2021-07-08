@@ -5,16 +5,9 @@
 @endsection
 
 @section('content')
-   <div class="row">
-      <div class="col-md-12"></div>
-          <h3 class="display-4  fw-bold fst-italic text-info">Calendario </h3>
-      </div>
-    </div>
-    <div class="row align-items-center text-center">
-      <div class="col-md-6 ">
+    <h3 class="display-4 pt-5  fw-bold fst-italic text-info text-center">Calendario </h3>
+      <div class="d-flex justify-content-around">
         <a class="btn btn-outline-primary " href="{{route('calendar.create')}}">Aggiungi giorno</a>
-      </div>
-      <div class="col-md-6">
         <form action="/calendar" method="POST" class="deleteAll">
           @method('DELETE')
           @csrf
@@ -22,12 +15,12 @@
         </form>
       </div>
    
-    <div class="d-flex flex-row bd-highlight mb-3 mt-4">
+   
+    <div class="row mt-4">
       @foreach ($notes as $n )
-      <div class="p-1 bd-highlight">
-        <div class="card text-center text-dark " style="width:16rem; left:5rem; top:12rem">
+      <div class="col-md-4 mb-4">
+        <div class="card text-center text-dark ">
           <div class="card-header">
-            
             <h2>{{$n->day->name}}</h2>
           </div>
           <div class="card-body">
@@ -37,53 +30,19 @@
             <p class="card-text">Ora fine:  {{ $n->ora_fine }}</p>
           </div>
           <div class="card-footer">
-            
-             <div class="row align-items-start ">
-               <div class="col-md-6">
-                    <a href="{{route('calendar.edit',$n->id)}}">
-                        <span class="material-icons">
-                           edit
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <form class="delete" action="/calendar/{{$n->id}}" method="POST">
-                       @method('DELETE')
-                      @csrf
-                      <button type="submit" class="btn-link">
-                        <span class="material-icons">
-                            delete
-                        </span>
-                      </button>
-                    </form>
-                </div>
-            
+            <div class="d-flex justify-content-between">
+              <a href="{{route('calendar.edit',$n->id)}}"><span class="material-icons">edit</span></a>
+              <form class="delete" action="/calendar/{{$n->id}}" method="POST">
+                 @method('DELETE')
+                 @csrf
+                <button type="submit" class="btn text-primary"><span class="material-icons">delete</span></button>
+              </form>
           </div> 
           </div>
-         
         </div>
       </div>
       @endforeach
     </div>
-  
-      
-      
-      </div>
-    </div>
-    
-          <style>
-            .btn-link{
-              border: none;
-              outline:none;
-              background: none;
-              cursor: pointer;
-              color: #0000ee;
-              padding: 0;
-              text-decoration: underline;
-              font-family: inherit;
-              font-size: inherit;
-            }
-          </style>
         
  @endsection         
   

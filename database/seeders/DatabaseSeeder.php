@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Day;
+use App\Models\Note;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,9 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-                Day::class,
-                Category::class,
-        ]);
+        // Note::factory(10)->create();
+     
     }
 }

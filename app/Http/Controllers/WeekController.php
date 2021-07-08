@@ -29,8 +29,7 @@ class WeekController extends Controller
        
         $categories = Category::all();
         $days = Day::all();
-       $note = new Note();
-        
+        $note = new Note();
 
         return view('calendar.create',
         compact('categories', 'note', 'days'));
